@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+.header {
+  width: 100%;
+  height: 5rem;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 10%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  -webkit-backdrop-filter: saturate(180%) blur(5px);
+          backdrop-filter: saturate(180%) blur(5px);
+  z-index: 10;
+}
+
+.header ul {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .header ul {
+    gap: 0.5rem;
+  }
+}
+
+.header ul li {
+  margin: 0 var(--size-4);
+  position: relative;
+}
+
+.header ul li a {
+  color: black;
+  font-size: var(--size-4);
+}
+
+@media (min-width: 768px) {
+  .header ul li a {
+    font-size: var(--size-5);
+  }
+}
+
+.header ul li a ~ .border {
+  position: absolute;
+  bottom: -2;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #ff033e;
+}
+
+.header ul li a:hover ~ .border {
+  width: 100%;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.logo {
+  font-size: var(--size-5);
+  font-family: "Lobster", cursive;
+  color: black;
+}
+
+@media (min-width: 768px) {
+  .logo {
+    font-size: var(--size-8);
+  }
+}
+/*# sourceMappingURL=layout.module.css.map */
