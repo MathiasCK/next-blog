@@ -41,3 +41,17 @@
     line-height: var(--size-6);
   }
 }
+
+.posts {
+  width: 90%;
+  max-width: 60rem;
+  margin: var(--size-8) auto;
+  h1 {
+    @media (min-width: 768px) {
+      font-size: var(--size-16);
+    }
+    font-size: var(--size-8);
+    color: var(--color-grey-800);
+    text-align: center;
+  }
+}
