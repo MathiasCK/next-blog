@@ -2,6 +2,7 @@ import classes from "./styles/post-detail.module.css";
 import PostHeader from "./post-header";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
+import Head from "next/head";
 
 // Themes for mastering javascript blogpost
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -43,10 +44,14 @@ const PostContent = (props) => {
     },
   };
   return (
-    <article className={classes.content}>
-      <PostHeader title={post.title} image={imagePath} />
-      <ReactMarkdown renderers={customRenderers}>{post.content}</ReactMarkdown>
-    </article>
+    <div>
+      <article className={classes.content}>
+        <PostHeader title={post.title} image={imagePath} />
+        <ReactMarkdown renderers={customRenderers}>
+          {post.content}
+        </ReactMarkdown>
+      </article>
+    </div>
   );
 };
 

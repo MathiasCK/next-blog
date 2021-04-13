@@ -1,8 +1,16 @@
 import PostContent from "../../components/posts/posts-detail/post-content";
 import { getPostData, getPostsFiles } from "../../utils/posts-utils";
-
+import Head from "next/head";
 const PostDetail = (props) => {
-  return <PostContent post={props.post} />;
+  return (
+    <div>
+      <Head>
+        <title>NextJS Blog | {props.post.title}</title>
+        <meta name="description" content={props.post.excerpt} />
+      </Head>
+      <PostContent post={props.post} />
+    </div>
+  );
 };
 
 export const getStaticProps = (context) => {

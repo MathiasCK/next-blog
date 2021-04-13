@@ -1,8 +1,17 @@
 import AllPosts from "../../components/posts/all-posts";
 import { getAllPosts } from "../../utils/posts-utils";
+import Head from "next/head";
 
 const AllPostsPage = (props) => {
-  return <AllPosts posts={props.posts} />;
+  return (
+    <div>
+      <Head>
+        <title>NextJS Blog | All Posts</title>
+        <meta name="description" content="NextJS Blog" />
+      </Head>
+      <AllPosts posts={props.posts} />
+    </div>
+  );
 };
 
 export const getStaticProps = () => {

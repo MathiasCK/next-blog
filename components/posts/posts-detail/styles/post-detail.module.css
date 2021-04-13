@@ -4,9 +4,10 @@
   margin: var(--size-8) auto;
   font-size: var(--size-5);
   line-height: var(--size-8);
-  background-color: var(--color-grey-100);
   border-radius: 6px;
   padding: var(--size-4);
+  -webkit-box-shadow: var(--shadow);
+          box-shadow: var(--shadow);
 }
 
 @media (min-width: 768px) {
@@ -27,7 +28,7 @@
 
 .header {
   padding-bottom: var(--size-8);
-  border-bottom: 8px solid var(--color-primary-100);
+  border-bottom: 1px solid black;
   margin: var(--size-4) 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -64,7 +65,6 @@
 
 .header h1 {
   font-size: var(--size-8);
-  color: var(--color-primary-500);
   margin: 0;
   line-height: initial;
   text-align: center;
