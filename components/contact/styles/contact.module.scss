@@ -1,11 +1,11 @@
 .contact {
+  background: whitesmoke;
+  box-shadow: var(--shadow-1);
   margin: var(--size-8) auto;
   border-radius: 6px;
-  background-color: var(--color-grey-100);
-  width: 90%;
+  width: 100%;
   max-width: 50rem;
   padding: var(--size-4);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   font-size: var(--size-6);
   h1 {
     font-size: var(--size-8);
@@ -21,8 +21,8 @@
 .form {
   label {
     display: block;
-    font-family: "Oswald", sans-serif;
-    font-weight: bold;
+    font-weight: lighter;
+    font-size: 1rem;
     margin: var(--size-2) 0 var(--size-1) 0;
   }
   input,
@@ -31,22 +31,28 @@
     padding: var(--size-1);
     border-radius: 4px;
     width: 100%;
-    border: 1px solid var(--color-grey-400);
-    background-color: var(--color-grey-50);
+    border: none;
     resize: none;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      box-shadow: var(--shadow-1);
+    }
   }
   button {
+    margin: 0 auto;
     font: inherit;
     cursor: pointer;
-    background-color: var(--color-primary-700);
-    border: 1px solid var(--color-primary-700);
+    background-color: #ff033e;
+    border: 1px solid transparent;
     padding: var(--size-2) var(--size-4);
     border-radius: 4px;
-    color: var(--color-primary-50);
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    color: white;
+    transition: 0.3s all ease-in-out;
     &:hover {
-      background-color: var(--color-primary-500);
-      border-color: var(--color-primary-500);
+      background: transparent;
+      border: 1px solid #ff033e;
+      color: black;
     }
   }
 }
