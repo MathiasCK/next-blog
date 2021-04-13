@@ -2,6 +2,7 @@
 
 * {
   box-sizing: border-box;
+  outline: none !important;
 }
 
 body {
@@ -42,7 +43,7 @@ body {
   --size-20: 5rem;
   --size-40: 10rem;
 
-  --shadow-1: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 
   margin: 0;
   background: white;

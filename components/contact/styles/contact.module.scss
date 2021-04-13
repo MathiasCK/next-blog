@@ -1,6 +1,6 @@
 .contact {
   background: whitesmoke;
-  box-shadow: var(--shadow-1);
+  box-shadow: var(--shadow);
   margin: var(--size-8) auto;
   border-radius: 6px;
   width: 100%;
@@ -36,7 +36,7 @@
     outline: none;
     transition: all 0.3s ease-in-out;
     &:hover {
-      box-shadow: var(--shadow-1);
+      box-shadow: var(--shadow);
     }
   }
   button {

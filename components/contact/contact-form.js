@@ -1,10 +1,13 @@
-import { useRef } from "react";
+import { useRef, useContext } from "react";
+import NotificationContext from "../../store/notification.context";
 import classes from "./styles/contact.module.css";
 
 const ContactForm = () => {
   const emailRef = useRef();
   const nameRef = useRef();
   const messageRef = useRef();
+
+  const notificationCtx = useContext(NotificationContext);
 
   const registrationHandler = (e) => {
     e.preventDefault();
@@ -13,23 +16,39 @@ const ContactForm = () => {
     const userName = nameRef.current.value;
     const userMessage = messageRef.current.value;
 
-    fetch("api/contact", {
-      method: "POST",
-      body: JSON.stringify({
-        email: userEmail,
-        name: userName,
-        message: userMessage,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-    alert("Message sent");
-    emailRef.current.value = "";
-    nameRef.current.value = "";
-    messageRef.current.value = "";
+    try {
+      fetch("api/contact", {
+        method: "POST",
+        body: JSON.stringify({
+          email: userEmail,
+          name: userName,
+          message: userMessage,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+        });
+
+      notificationCtx.showNotification({
+        title: "Signed up!",
+        message: "Succesfully registered for newsletter",
+        status: "success",
+      });
+      emailRef.current.value = "";
+      nameRef.current.value = "";
+      messageRef.current.value = "";
+    } catch (error) {
+      console.log(error.message);
+      notificationCtx.showNotification({
+        title: "Signed up!",
+        message: "Succesfully registered for newsletter",
+        status: "error",
+      });
+    }
   };
   return (
     <section className={classes.contact}>
