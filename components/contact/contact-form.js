@@ -16,39 +16,43 @@ const ContactForm = () => {
     const userName = nameRef.current.value;
     const userMessage = messageRef.current.value;
 
-    try {
-      fetch("api/contact", {
-        method: "POST",
-        body: JSON.stringify({
-          email: userEmail,
-          name: userName,
-          message: userMessage,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
+    fetch("api/contact", {
+      method: "POST",
+      body: JSON.stringify({
+        email: userEmail,
+        name: userName,
+        message: userMessage,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        return response.json().then((data) => {
+          throw new Error(data.message || "Something went wrong!");
         });
-
-      notificationCtx.showNotification({
-        title: "Signed up!",
-        message: "Succesfully registered for newsletter",
-        status: "success",
+      })
+      .then((data) => {
+        console.log(data);
+        notificationCtx.showNotification({
+          title: "Signed up!",
+          message: "Succesfully registered for newsletter",
+          status: "success",
+        });
+        emailRef.current.value = "";
+        nameRef.current.value = "";
+        messageRef.current.value = "";
+      })
+      .catch((error) => {
+        notificationCtx.showNotification({
+          title: "Error signing up!",
+          message: error.message || "Error registering for newsletter",
+          status: "error",
+        });
       });
-      emailRef.current.value = "";
-      nameRef.current.value = "";
-      messageRef.current.value = "";
-    } catch (error) {
-      console.log(error.message);
-      notificationCtx.showNotification({
-        title: "Signed up!",
-        message: "Succesfully registered for newsletter",
-        status: "error",
-      });
-    }
   };
   return (
     <section className={classes.contact}>
