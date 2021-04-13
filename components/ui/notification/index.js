@@ -1,6 +1,7 @@
 import NotificationContext from "../../../store/notification.context";
 import classes from "./notification.module.css";
 import { useContext } from "react";
+import ReactDOM from "react-dom";
 
 const Notification = (props) => {
   const notificationCtx = useContext(NotificationContext);
@@ -19,11 +20,12 @@ const Notification = (props) => {
 
   const activeClasses = `${classes.notification} ${statusClasses}`;
 
-  return (
+  return ReactDOM.createPortal(
     <div className={activeClasses} onClick={notificationCtx.hideNotification}>
       <h2>{title}</h2>
       <p>{message}</p>
-    </div>
+    </div>,
+    document.getElementById("notifications")
   );
 };
 
